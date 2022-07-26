@@ -1,11 +1,12 @@
 {
-  "name": "auth0TestBack",
+  "name": "auth0testback",
   "version": "1.0.0",
-  "description": "",
+  "description": "**Author**: Caelin Hargrave and TJ Parker",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed": "node seed.js"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +16,14 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongoose": "^6.4.7"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Caelinh/can-of-books-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Caelinh/can-of-books-backend/issues"
+  },
+  "homepage": "https://github.com/Caelinh/can-of-books-backend#readme"
 }

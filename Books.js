@@ -1,10 +1,10 @@
 'use strict';
 
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-mongoose.connect('mongodb://localhost:27017/books')
-
-let bookSchema = new mongoose.Schema({
+mongoose.connect(process.env.DATABASE_URL);
+const bookSchema = new mongoose.Schema({
     title: String,
     description: String,
     status: String
@@ -12,9 +12,4 @@ let bookSchema = new mongoose.Schema({
 
 const Book = mongoose.model('Book', bookSchema);
 
-
-
-Book.find().then(data => {
-    console.log(data);
-})
 module.exports = Book;
