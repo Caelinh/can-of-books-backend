@@ -23,4 +23,14 @@ app.get('/book', (request, response) => {
 
 })
 
+app.delete('/book/:id', async (request, response, next) => {
+
+  let id = request.params.id;
+  try {
+    let book = await Book.deleteOne({ _id: id });
+    response.send(book);
+  } catch(e) {
+    next(e);
+  }
+});
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
