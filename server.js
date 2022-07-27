@@ -15,12 +15,15 @@ const PORT = process.env.PORT || 3001;
 
 
 app.get('/book', (request, response) => {
-
   Book.find()
     .then(bookData => {
       response.send(bookData);
     })
 
+})
+
+app.post('/book', (request, response, next) => {
+  response.send(bookData;
 })
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
