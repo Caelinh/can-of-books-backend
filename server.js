@@ -23,8 +23,11 @@ app.get('/books', (request, response) => {
 
 })
 
-app.post('/books', (request, response, next) => {
-  response.send(bookData);
+app.post('/books', async (request, response, next) => {
+  const {title, description, status} = request.body;
+  const newBook = await Book.create({title, description, status});
+
+  response.send(newBook);
 })
 
 app.delete('/books/:id', async (request, response, next) => {
