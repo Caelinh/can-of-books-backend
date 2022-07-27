@@ -1,9 +1,9 @@
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 const Book = require('./Books')
 
 require('dotenv').config();
 
-mongoose.connect(process.env.DATABASE_URL);
+// mongoose.connect(process.env.DATABASE_URL);
 
 async function newBooks() {
     
