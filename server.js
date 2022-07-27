@@ -14,7 +14,7 @@ app.use(cors());
 const PORT = process.env.PORT || 3001;
 
 
-app.get('/book', (request, response) => {
+app.get('/books', (request, response) => {
 
   Book.find()
     .then(bookData => {
