@@ -9,6 +9,7 @@ const cors = require('cors');
 const Book = require('./Books')
 const app = express();
 app.use(cors());
+app.use(express.json())
 
 
 const PORT = process.env.PORT || 3020;
@@ -24,7 +25,9 @@ app.get('/books', (request, response) => {
 })
 
 app.post('/books', async (request, response, next) => {
+  console.log(request.body)
   const {title, description, status} = request.body;
+
   const newBook = await Book.create({title, description, status});
 
   response.send(newBook);
