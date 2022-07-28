@@ -13,15 +13,37 @@ app.use(cors());
 
 const PORT = process.env.PORT || 3001;
 
+app.post('/book', (request, response, next) => {
+  console.log(request.body);
+  let { title, description, status } = request.body;
+  if (!title || !description || !status) {
+    next('Bad request');
+  }
 
-app.get('/books', (request, response) => {
+  let book = new Book({
+    title,
+    description,
+    status,
+  });
+  book.save()
+    .then(results => {
+      response.send(results);
+    })
+    .catch(error => {
+      next(error);
+    });
+});
 
+
+app.get('/book', (request, response) => {
   Book.find()
     .then(bookData => {
       response.send(bookData);
     })
 
 })
+
+
 
 app.delete('/book/:id', async (request, response, next) => {
 
