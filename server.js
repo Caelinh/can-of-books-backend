@@ -10,6 +10,7 @@ const Book = require('./Books')
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(express.json())
 
 
 const PORT = process.env.PORT || 3020;
@@ -46,6 +47,7 @@ app.get('/books', (request, response) => {
 })
 
 
+
 app.put('/books/:id', async (request, response, next) => {
   let id = request.params.id;
   console.log(request.body);
@@ -53,6 +55,7 @@ app.put('/books/:id', async (request, response, next) => {
   const updatedBook = await Book.findOneAndUpdate({_id: id}, { title, description, status }, { new: true, overwrite: true });
   response.send(updatedBook);
    
+
 })
 
 
