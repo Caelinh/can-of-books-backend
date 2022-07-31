@@ -8,6 +8,7 @@ const cors = require('cors');
 // mongoose.connect(process.env.DATABASE_URL);
 const Book = require('./Books')
 const app = express();
+app.use(express.json());
 app.use(cors());
 
 
@@ -45,11 +46,13 @@ app.get('/books', (request, response) => {
 })
 
 
-app.post('/books', async (request, response, next) => {
-  const {title, description, status} = request.body;
-  const newBook = await Book.create({title, description, status});
-
-  response.send(newBook);
+app.put('/books/:id', async (request, response, next) => {
+  let id = request.params.id;
+  console.log(request.body);
+  const { title, description, status } = request.body;
+  const updatedBook = await Book.findOneAndUpdate({_id: id}, { title, description, status }, { new: true, overwrite: true });
+  response.send(updatedBook);
+   
 })
 
 
