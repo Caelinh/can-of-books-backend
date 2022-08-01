@@ -15,7 +15,7 @@ app.use(express.json())
 
 const PORT = process.env.PORT || 3020;
 
-app.post('/book', (request, response, next) => {
+app.post('/books', (request, response, next) => {
   console.log(request.body);
   let { title, description, status } = request.body;
   if (!title || !description || !status) {
